@@ -9,11 +9,7 @@ public class Main {
         final int noOperationsForThread = 100;
 
         Transfers transfers = new Transfers(noAccounts, noThreads, noOperationsForThread);
-//        transfers.printAccounts();
         transfers.startOperations();
-//        transfers.printAccounts();
-
-
     }
 }
 

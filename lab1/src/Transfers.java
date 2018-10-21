@@ -35,7 +35,7 @@ class Transfers {
         for (int i = 0; i < this.operationsForThread; i++) {
             for (int j = 0; j < this.noThreads; j++) {
                 this.threads.add(new Thread(new MyRunnable(this)));
-               this.threads.get(j).setName(String.valueOf(j));
+                this.threads.get(j).setName(String.valueOf(j));
             }
             for (Thread thread : this.threads) {
                 thread.start();
@@ -57,7 +57,6 @@ class Transfers {
         }
         return null;
     }
-
 
     void doOperation(Operation operation) {
 
@@ -88,6 +87,33 @@ class Transfers {
     }
 
     private void performConsistencyCheck() {
+
+        if (!this.checkMoney()) {
+            System.out.println("Accounts are inconsistent");
+            System.exit(0);
+        }
+
+        boolean consistentLogs;
+
+        for (Account account : this.accounts) {
+            for (Operation operation : account.getLogs()) {
+                if (operation.getSource() == account.getId()) {
+                    consistentLogs = this.checkLogs(operation, operation.getDestination());
+                } else {
+                    consistentLogs = this.checkLogs(operation, operation.getSource());
+                }
+
+                if (!consistentLogs) {
+                    System.out.println("Accounts are inconsistent");
+                    System.exit(0);
+                }
+            }
+        }
+
+        System.out.println("The accounts are consistent...");
+    }
+
+    private boolean checkMoney() {
         for (Account account : this.accounts) {
             long initialBalance = account.getIntialBalace();
             long currentBalance = account.getCurrentBalance();
@@ -98,10 +124,23 @@ class Transfers {
 
                 if (operation.getDestination() == account.getId())
                     currentBalance -= operation.getSum();
-
             }
-            assert (currentBalance == initialBalance);
+
+            if (currentBalance != initialBalance) {
+                return false;
+            }
         }
-        System.out.println("Accounts are consistent!");
+        return true;
+    }
+
+    private boolean checkLogs(Operation operation, int accountId) {
+        Account account = this.getAccountById(accountId);
+
+        for (Operation op : account.getLogs()) {
+            if (operation.equals(op)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
