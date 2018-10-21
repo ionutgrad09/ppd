@@ -69,7 +69,7 @@ class Transfers {
                     System.out.println("Executing " + ++this.counter + " : " + operation.toString());
                     System.out.println("Thread: " + Thread.currentThread().getName());
 
-                    source.substractMoney(operation.getSum());
+                    source.subtractMoney(operation.getSum());
                     source.addLog(operation);
 
                     destination.addMoney(operation.getSum());
@@ -115,7 +115,7 @@ class Transfers {
 
     private boolean checkMoney() {
         for (Account account : this.accounts) {
-            long initialBalance = account.getIntialBalace();
+            long initialBalance = account.getInitialBalance();
             long currentBalance = account.getCurrentBalance();
 
             for (Operation operation : account.getLogs()) {

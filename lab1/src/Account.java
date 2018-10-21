@@ -29,7 +29,7 @@ class Account {
         return logs;
     }
 
-    long getIntialBalace() {
+    long getInitialBalance() {
         return initialBalance;
     }
 
@@ -41,16 +41,12 @@ class Account {
         this.currentBalance+=sum;
     }
 
-    void substractMoney(long sum){
+    void subtractMoney(long sum){
         this.currentBalance-=sum;
     }
 
     void addLog(Operation op){
         this.logs.add(op);
-    }
-
-    void lock(){
-        this.lock.lock();
     }
 
     void unlock(){
@@ -67,14 +63,7 @@ class Account {
                 '}';
     }
 
-    synchronized boolean tryLock(){
-        try {
-            return this.lock.tryLock(0,TimeUnit.SECONDS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return false;
-        }
+    boolean tryLock(){
+        return this.lock.tryLock();
     }
-
-
 }
