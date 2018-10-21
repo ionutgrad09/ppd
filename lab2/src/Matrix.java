@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Matrix {
+class Matrix {
 
     private final int noRows;
     private final int noColumns;
@@ -28,15 +28,20 @@ public class Matrix {
         }
     }
 
-    int [][] getMatrixValues(){
+    int[][] getMatrixValues() {
         return this.matrixValues;
     }
 
-    void setMatrixValues(int i, int j, int value){
+    void setMatrixValues(int i, int j, int value) {
         this.matrixValues[i][j] = value;
     }
 
-    int getNoColumns(){return this.noColumns; }
-    int getNoRows(){return this.noRows;}
+    int getNoColumns() {
+        return this.noColumns;
+    }
+
+    int getNoRows() {
+        return this.noRows;
+    }
 
 }

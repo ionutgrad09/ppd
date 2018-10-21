@@ -9,7 +9,7 @@ public class CustomThread extends Thread {
     private Matrix prodResult;
     private List<Indexes> indexes = new ArrayList<Indexes>();
 
-    CustomThread(Matrix firstMatrix, Matrix secondMatrix, Matrix sumResult, Matrix prodResult){
+    CustomThread(Matrix firstMatrix, Matrix secondMatrix, Matrix sumResult, Matrix prodResult) {
         this.firstMatrix = firstMatrix;
         this.secondMatrix = secondMatrix;
         this.sumResult = sumResult;
@@ -30,7 +30,7 @@ public class CustomThread extends Thread {
                     firstMatrix.getMatrixValues()[i][j] + secondMatrix.getMatrixValues()[i][j]
             );
 
-            for (int k =0 ; k < firstMatrix.getNoColumns(); k++){
+            for (int k = 0; k < firstMatrix.getNoColumns(); k++) {
                 prodResult.setMatrixValues(i, j,
                         firstMatrix.getMatrixValues()[i][k] * secondMatrix.getMatrixValues()[k][j]
                 );

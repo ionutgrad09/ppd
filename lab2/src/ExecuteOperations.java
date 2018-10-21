@@ -42,11 +42,11 @@ class ExecuteOperations {
             }
         }
 
-        for(Thread thread: threadList){
+        for (Thread thread : threadList) {
             thread.start();
         }
 
-        for(Thread thread: threadList){
+        for (Thread thread : threadList) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
