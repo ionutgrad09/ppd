@@ -26,9 +26,9 @@ public class CustomThread extends Thread {
             int i = indexes.getI();
             int j = indexes.getJ();
 
-            sumResult.setMatrixValues(i, j,
-                    firstMatrix.getMatrixValues()[i][j] + secondMatrix.getMatrixValues()[i][j]
-            );
+//            sumResult.setMatrixValues(i, j,
+//                    firstMatrix.getMatrixValues()[i][j] + secondMatrix.getMatrixValues()[i][j]
+//            );
 
             for (int k = 0; k < firstMatrix.getNoColumns(); k++) {
                 prodResult.setMatrixValues(i, j,

@@ -4,7 +4,7 @@ class ExecuteOperations {
 
     private final int ROWS = 1000;
     private final int COLUMNS = 1000;
-    private final int THREADS = 10;
+    private final int THREADS = 1000;
 
     private Matrix firstMatrix;
     private Matrix secondMatrix;
@@ -19,11 +19,11 @@ class ExecuteOperations {
         this.sumResult = new Matrix(ROWS, COLUMNS);
         this.prodResult = new Matrix(ROWS, COLUMNS);
 
-        System.out.println("First matrix: ");
-        firstMatrix.printMatrix();
-        System.out.println("Second matrix: ");
-        secondMatrix.printMatrix();
-        System.out.println("***********************************************************************************");
+//        System.out.println("First matrix: ");
+//        firstMatrix.printMatrix();
+//        System.out.println("Second matrix: ");
+//        secondMatrix.printMatrix();
+//        System.out.println("***********************************************************************************");
     }
 
     void execute() {
@@ -53,11 +53,11 @@ class ExecuteOperations {
                 e.printStackTrace();
             }
         }
-
-        System.out.println("Prod result: ");
-        prodResult.printMatrix();
-        System.out.println("Sum result: ");
-        sumResult.printMatrix();
+//
+//        System.out.println("Prod result: ");
+//        prodResult.printMatrix();
+//        System.out.println("Sum result: ");
+//        sumResult.printMatrix();
 
     }
 
